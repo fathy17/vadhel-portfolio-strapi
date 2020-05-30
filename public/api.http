@@ -1,0 +1,10 @@
+
+
+POST http://localhost:1337/email
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "andifathyahmadfahrezy@gmail.com",
+    "message": "tes 1233"
+}

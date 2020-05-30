@@ -1,0 +1,8 @@
+{
+  "provider": "cloudinary",
+  "providerOptions": {
+    "cloud_name": "fathy17cloud",
+    "api_key": "837427954861847",
+    "api_secret": "y0m6ORXyNGh5zwuw3bWD9zw6C_g"
+  }
+}

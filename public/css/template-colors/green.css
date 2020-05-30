@@ -1,0 +1,341 @@
+/**
+* Ryan - Resume/CV/vCard Template (HTML)
+* Version: 2.0
+* Author: beshleyua
+* Author URL: http://themeforest.net/user/beshleyua
+* Copyright Â© Cvio by beshleyua. All Rights Reserved.
+**/
+
+/* TABLE OF CONTENTS
+	1. Template Green
+*/
+
+/* 1. Template Green */
+.theme-light {
+  --color-theme: rgb(0, 175, 219);
+  --color-style-1: rgba(122, 122, 122, 0.4);
+  --color-style-2: rgba(122, 122, 122, 0.01);
+}
+
+.theme-dark {
+  --color-theme: rgb(214, 9, 9);
+  --color-style-1: rgba(255, 255, 255, 0.4);
+  --color-style-2: rgba(255, 255, 255, 0.01);
+}
+
+.background {
+  background-color: var(--color-style-1);
+}
+
+.preloader .spinner .double-bounce1,
+.preloader .spinner .double-bounce2 {
+  background: var(--color-theme);
+}
+
+.lnk:hover,
+.button:hover {
+  color: var(--color-theme);
+}
+
+.lnk:hover .ion,
+.button:hover .ion {
+  color: var(--color-theme);
+}
+
+.lnk:hover .arrow:before,
+.button:hover .arrow:before,
+.lnk:hover .arrow:after,
+.button:hover .arrow:after {
+  background: var(--color-theme);
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  border-bottom: 1px solid var(--color-theme);
+}
+
+button:hover {
+  border-bottom: 1px solid var(--color-theme);
+}
+
+.header .top-menu ul li:hover a,
+.header .top-menu ul li.active a {
+  color: var(--color-theme);
+}
+
+.header .top-menu ul li:hover a .icon,
+.header .top-menu ul li.active a .icon,
+.header .top-menu ul li:hover a .link,
+.header .top-menu ul li.active a .link {
+  color: var(--color-theme);
+}
+
+.card-started:after {
+  background: -moz-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+}
+
+.card-started .profile .image:before {
+  background: -moz-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+}
+
+.card-started .profile .subtitle {
+  color: var(--color-theme);
+}
+
+.card-started .profile .social a:hover .ion,
+.card-started .profile .social a:hover .fab,
+.card-started .profile .social a:hover .fas {
+  color: var(--color-theme);
+}
+
+.content .title:before {
+  background: -moz-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+}
+
+.service-items .service-item .icon {
+  color: var(--color-theme);
+  background: -moz-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+}
+
+.pricing-items .pricing-item .icon {
+  color: var(--color-theme);
+}
+
+.pricing-items .pricing-item .feature-list ul li strong {
+  background: var(--color-style-1);
+}
+
+.fuct-items .fuct-item .icon {
+  color: var(--color-theme);
+}
+
+.resume-title .icon,
+.skill-title .icon {
+  color: var(--color-theme);
+}
+
+.resume-items .resume-item.active .date {
+  color: var(--color-theme);
+}
+
+.resume-items .resume-item.active .date:before {
+  background: var(--color-theme);
+}
+
+.skills-list ul li .progress .percentage {
+  background: var(--color-theme);
+}
+
+.content.works .filter-menu .f_btn.active {
+  color: var(--color-theme);
+}
+
+.box-item .image .info:before {
+  background: -moz-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    var(--color-style-1) 0%,
+    var(--color-style-2) 100%
+  );
+}
+
+.post-box .blog-content blockquote {
+  border-left: 2px solid var(--color-theme);
+}
+
+.post-box .blog-content ul.list-style li:before {
+  background: var(--color-theme);
+}
+
+.post-box .post-comments li .comment-info .name h6 {
+  color: var(--color-theme);
+}
+
+.background.gradient {
+  background: #50a3a2;
+  background: -webkit-linear-gradient(
+    top left,
+    #50a3a2 0%,
+    var(--color-theme) 100%
+  );
+  background: linear-gradient(
+    to bottom right,
+    #50a3a2 0%,
+    var(--color-theme) 100%
+  );
+}
+
+/*
+  New Styles
+*/
+
+.skills-list.list ul li .name:before {
+  color: var(--color-theme);
+}
+
+.skills-list.dotted ul li .progress .da span {
+  background: var(--color-theme) !important;
+}
+
+.skills-list.circles .progress .bar,
+.skills-list.circles .progress.p51 .fill,
+.skills-list.circles .progress.p52 .fill,
+.skills-list.circles .progress.p53 .fill,
+.skills-list.circles .progress.p54 .fill,
+.skills-list.circles .progress.p55 .fill,
+.skills-list.circles .progress.p56 .fill,
+.skills-list.circles .progress.p57 .fill,
+.skills-list.circles .progress.p58 .fill,
+.skills-list.circles .progress.p59 .fill,
+.skills-list.circles .progress.p60 .fill,
+.skills-list.circles .progress.p61 .fill,
+.skills-list.circles .progress.p62 .fill,
+.skills-list.circles .progress.p63 .fill,
+.skills-list.circles .progress.p64 .fill,
+.skills-list.circles .progress.p65 .fill,
+.skills-list.circles .progress.p66 .fill,
+.skills-list.circles .progress.p67 .fill,
+.skills-list.circles .progress.p68 .fill,
+.skills-list.circles .progress.p69 .fill,
+.skills-list.circles .progress.p70 .fill,
+.skills-list.circles .progress.p71 .fill,
+.skills-list.circles .progress.p72 .fill,
+.skills-list.circles .progress.p73 .fill,
+.skills-list.circles .progress.p74 .fill,
+.skills-list.circles .progress.p75 .fill,
+.skills-list.circles .progress.p76 .fill,
+.skills-list.circles .progress.p77 .fill,
+.skills-list.circles .progress.p78 .fill,
+.skills-list.circles .progress.p79 .fill,
+.skills-list.circles .progress.p80 .fill,
+.skills-list.circles .progress.p81 .fill,
+.skills-list.circles .progress.p82 .fill,
+.skills-list.circles .progress.p83 .fill,
+.skills-list.circles .progress.p84 .fill,
+.skills-list.circles .progress.p85 .fill,
+.skills-list.circles .progress.p86 .fill,
+.skills-list.circles .progress.p87 .fill,
+.skills-list.circles .progress.p88 .fill,
+.skills-list.circles .progress.p89 .fill,
+.skills-list.circles .progress.p90 .fill,
+.skills-list.circles .progress.p91 .fill,
+.skills-list.circles .progress.p92 .fill,
+.skills-list.circles .progress.p93 .fill,
+.skills-list.circles .progress.p94 .fill,
+.skills-list.circles .progress.p95 .fill,
+.skills-list.circles .progress.p96 .fill,
+.skills-list.circles .progress.p97 .fill,
+.skills-list.circles .progress.p98 .fill,
+.skills-list.circles .progress.p99 .fill,
+.skills-list.circles .progress.p100 .fill {
+  border: 0.09em solid var(--color-theme);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-theme);
+}
+
+.card-started .profile .subtitle,
+.card-started .profile .typed-cursor {
+  color: var(--color-theme);
+}
+
+.content .title .first-word {
+  color: var(--color-theme);
+}
+
+.content .title::first-letter,
+.content .title .first-letter::first-letter {
+  color: var(--color-theme);
+}
+
+.new-skin .service-items .service-item .icon {
+  background: var(--color-theme) !important;
+}
+
+.resume-items .resume-item.active .date {
+  border-color: var(--color-theme);
+}
+
+.box-item:hover .desc .name {
+  color: var(--color-theme);
+}
+
+.new-skin .info-list ul li strong {
+  background: var(--color-theme);
+}
+
+.revs-carousel .owl-dots .owl-dot {
+  border-color: var(--color-theme);
+}
+
+.revs-carousel .owl-dot.active {
+  background: var(--color-theme);
+}

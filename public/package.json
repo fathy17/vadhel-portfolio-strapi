@@ -1,0 +1,23 @@
+{
+  "name": "vadhel-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fathy17/vadhel-portfolio.git"
+  },
+  "author": "fathy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fathy17/vadhel-portfolio/issues"
+  },
+  "homepage": "https://github.com/fathy17/vadhel-portfolio#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
