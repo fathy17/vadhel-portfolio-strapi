@@ -92,7 +92,7 @@ $(function () {
       $(".card-inner").removeClass("fadeOutUp");
       $(".card-inner").removeClass("animated");
 
-      $(window).on("scroll", function () {
+      /* $(window).on("scroll", function () {
         var scrollPos = $(window).scrollTop();
         $(".top-menu ul li a").each(function () {
           var currLink = $(this);
@@ -102,7 +102,7 @@ $(function () {
             currLink.closest("li").addClass("active");
           }
         });
-      });
+      }); */
 
       $(".card-inner .card-wrap").slimScroll({ destroy: true });
       $(".card-inner .card-wrap").attr("style", "");
@@ -115,24 +115,6 @@ $(function () {
       }
     }
   });
-
-  /*
-		Smoothscroll
-	*/
-
-  if ((width < 1024) & $("#home-card").length) {
-    $(window).on("scroll", function () {
-      var scrollPos = $(window).scrollTop();
-      $(".top-menu ul li a").each(function () {
-        var currLink = $(this);
-        var refElement = $(currLink.attr("href"));
-        if (refElement.offset().top - 76 <= scrollPos) {
-          $(".top-menu ul li").removeClass("active");
-          currLink.closest("li").addClass("active");
-        }
-      });
-    });
-  }
 
   /*
 		slimScroll
@@ -152,29 +134,12 @@ $(function () {
     $('.top-menu a[href="#contacts-card"]').trigger("click");
   });
 
-  /*
-		Tesimonials Carousel
-	*/
+  /*Tesimonials Carousel*/
   var revs_slider = $(".revs-carousel.default-revs .owl-carousel");
 
   revs_slider.owlCarousel({
     margin: 0,
     items: 1,
-    autoplay: false,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    loop: true,
-    rewind: false,
-    nav: false,
-    dots: true,
-  });
-
-  var rtl_revs_slider = $(".revs-carousel.rtl-revs .owl-carousel");
-
-  rtl_revs_slider.owlCarousel({
-    margin: 0,
-    items: 1,
-    rtl: true,
     autoplay: false,
     autoplayTimeout: 5000,
     autoplayHoverPause: true,
@@ -369,20 +334,22 @@ function pauseVideo() {
 /* FETCH DATA STRAPI */
 
 const projectsDOM = document.querySelector(".projects");
+const testimoniesDOM = document.querySelector(".testimonies");
 
 (function () {
-  fetch("http://localhost:1337/projects")
+  /* PROJECTS */
+  fetch("/projects")
     .then((response) => response.json())
     .then((data) => {
       let markup = data.map((project) => {
         let images = project.image.map(
           (image) =>
-            `<div class="mySlides fade slides-${project.id}">
+            `<div class="item">
               <img src="${image.formats.small.url}" style="width:100%">
-              <div class="text-slides">${image.name}</div>
             </div>`
         );
-        console.log(images);
+        let test = "";
+        images.forEach((item) => (test += item));
         return `<div onclick="mySlider(event)"
           class="col col-d-6 col-t-6 col-m-12 grid-item ${project.type.toLowerCase()} border-line-h"
         >
@@ -408,12 +375,9 @@ const projectsDOM = document.querySelector(".projects");
             </div>
             <div id="popup-${project.id}" class="popup-box mfp-fade mfp-hide">
               <div class="content">
-              <div class="slideshow-container">
+              <div class="owl-carousel revs-carousel slide-carousel">
   
-                ${images}
-                
-                <a class="prev" >&#10094;</a>
-                <a class="next" >&#10095;</a>
+                ${test}
               
               </div>
                 <div class="desc">
@@ -434,9 +398,24 @@ const projectsDOM = document.querySelector(".projects");
     })
     .then((html) => html.forEach((item) => (projectsDOM.innerHTML += item)))
     .then(() => {
-      /*
-		Initialize Portfolio
-	*/
+      /* Project Carousel */
+      var revs_carousel = $(".content .owl-carousel");
+
+      revs_carousel.owlCarousel({
+        margin: 0,
+        items: 1,
+        autoplay: false,
+        autoplayTimeout: 10000,
+        autoplayHoverPause: true,
+        loop: true,
+        rewind: false,
+        nav: false,
+        dots: true,
+        lazyLoad: true,
+        autoHeight: true,
+      });
+
+      /*Initialize Portfolio*/
       var $container = $(".grid-items");
       $container.imagesLoaded(function () {
         $container.isotope({
@@ -445,9 +424,7 @@ const projectsDOM = document.querySelector(".projects");
         });
       });
 
-      /*
-		Filter items on button click
-	*/
+      /*Filter items on button click*/
       $(".filter-button-group").on("click", ".f_btn", function () {
         var filterValue = $(this).find("input").val();
         $container.isotope({ filter: "." + filterValue });
@@ -455,9 +432,7 @@ const projectsDOM = document.querySelector(".projects");
         $(this).addClass("active");
       });
 
-      /*
-		Gallery popup
-	*/
+      /*Gallery popup*/
       if (
         /\.(?:jpg|jpeg|gif|png)$/i.test($(".gallery-item:first a").attr("href"))
       ) {
@@ -471,9 +446,7 @@ const projectsDOM = document.querySelector(".projects");
         });
       }
 
-      /*
-		Media popup
-	*/
+      /*Media popup*/
       $(".has-popup-media").magnificPopup({
         type: "inline",
         overflowY: "auto",
@@ -481,9 +454,7 @@ const projectsDOM = document.querySelector(".projects");
         mainClass: "mfp-fade popup-box-inline",
       });
 
-      /*
-		Image popup
-	*/
+      /*Image popup*/
       $(".has-popup-image").magnificPopup({
         type: "image",
         closeOnContentClick: true,
@@ -493,9 +464,7 @@ const projectsDOM = document.querySelector(".projects");
         },
       });
 
-      /*
-		Video popup
-	*/
+      /*Video popup*/
       $(".has-popup-video").magnificPopup({
         disableOn: 700,
         type: "iframe",
@@ -519,9 +488,7 @@ const projectsDOM = document.querySelector(".projects");
         },
       });
 
-      /*
-		Music popup
-	*/
+      /*Music popup*/
       $(".has-popup-music").magnificPopup({
         disableOn: 700,
         type: "iframe",
@@ -531,9 +498,7 @@ const projectsDOM = document.querySelector(".projects");
         mainClass: "mfp-fade",
       });
 
-      /*
-		Gallery popup
-	*/
+      /*Gallery popup*/
       $(".has-popup-gallery").on("click", function () {
         var gallery = $(this).attr("href");
 
@@ -564,39 +529,61 @@ const projectsDOM = document.querySelector(".projects");
         $.magnificPopup.close();
       });
     });
+
+  /* TESTIMONIES */
+  fetch("/testimonies")
+    .then((res) => res.json())
+    .then((data) => {
+      let markup = data.map((testimony) => {
+        return `
+        <div class="item">
+          <div class="revs-item">
+            <div class="text">
+              ${testimony.description}
+            </div>
+            <div class="user">
+              <div class="img">
+                <img
+                  class="lazyload"
+                  data-src="${testimony.image.formats.thumbnail.url}"
+                  alt=""
+                />
+              </div>
+              <div class="info">
+                <div class="name">${testimony.name}</div>
+                <div class="company">${testimony.role}</div>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+        `;
+      });
+      return markup;
+    })
+    .then((html) => {
+      let markup = "";
+      html.forEach((item) => (markup += item));
+      testimoniesDOM.innerHTML = `
+      <div class="revs-carousel default-revs">
+        <div class="owl-carousel testimonies">
+          ${markup}
+        </div>
+      </div>`;
+    })
+    .then(() => {
+      var revs_slider = $(".revs-carousel.default-revs .owl-carousel");
+
+      revs_slider.owlCarousel({
+        margin: 0,
+        items: 1,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        rewind: false,
+        nav: false,
+        dots: true,
+      });
+    });
 })();
-
-function mySlider(event) {
-  console.log(event.target.attributes["popup"].value);
-  const id = event.target.attributes["popup"].value;
-  const slides = document.querySelectorAll(`.mySlides.${id}`);
-  const prev = document.querySelector(".prev");
-  const next = document.querySelector(".next");
-
-  prev.addEventListener("click", () => plusSlides(-1));
-  next.addEventListener("click", () => plusSlides(1));
-  let slideIndex = 1;
-  showSlides(slideIndex);
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
-
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides(n) {
-    let i;
-
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-  }
-}
