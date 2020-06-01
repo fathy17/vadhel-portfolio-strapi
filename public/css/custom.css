@@ -11,3 +11,28 @@
 .slide-carousel .owl-dots {
   bottom: 20px;
 }
+
+.owl-nav {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.owl-nav .owl-prev {
+  position: absolute;
+  color: var(--color-theme) !important;
+  left: 20px;
+}
+
+.owl-nav .owl-next {
+  position: absolute;
+  color: var(--color-theme) !important;
+  right: 20px;
+}
+
+.owl-prev span,
+.owl-next span {
+  font-size: 3rem;
+}
