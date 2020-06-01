@@ -342,18 +342,20 @@ const testimoniesDOM = document.querySelector(".testimonies");
     .then((response) => response.json())
     .then((data) => {
       let markup = data.map((project) => {
-        let images = project.image.map(
-          (image) =>
-            `<div class="item">
-              <img src="${image.formats.small.url}" style="width:100%">
-            </div>`
-        );
+        let images = project.image.map((image) => {
+          return `
+            <div class="item">
+              <a target="_blank" href="${image.formats.large.url}">
+                <img src="${image.formats.small.url}" style="width:100%">
+              </a>
+            </div>`;
+        });
         let test = "";
         images.forEach((item) => (test += item));
-        return `<div onclick="mySlider(event)"
+        return `<div
           class="col col-d-6 col-t-6 col-m-12 grid-item ${project.type.toLowerCase()} border-line-h"
         >
-          <div class="box-item">
+          <div class="box-item" onclick="modalHashtag()">
             <div class="image">
               <a href="#popup-${project.id}" class="has-popup-media">
                 <img
@@ -432,20 +434,6 @@ const testimoniesDOM = document.querySelector(".testimonies");
         $(this).addClass("active");
       });
 
-      /*Gallery popup*/
-      if (
-        /\.(?:jpg|jpeg|gif|png)$/i.test($(".gallery-item:first a").attr("href"))
-      ) {
-        $(".gallery-item a").magnificPopup({
-          gallery: {
-            enabled: true,
-          },
-          type: "image",
-          closeBtnInside: false,
-          mainClass: "mfp-fade",
-        });
-      }
-
       /*Media popup*/
       $(".has-popup-media").magnificPopup({
         type: "inline",
@@ -462,71 +450,6 @@ const testimoniesDOM = document.querySelector(".testimonies");
         image: {
           verticalFit: true,
         },
-      });
-
-      /*Video popup*/
-      $(".has-popup-video").magnificPopup({
-        disableOn: 700,
-        type: "iframe",
-        iframe: {
-          patterns: {
-            youtube_short: {
-              index: "youtu.be/",
-              id: "youtu.be/",
-              src: "https://www.youtube.com/embed/%id%?autoplay=1",
-            },
-          },
-        },
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-        mainClass: "mfp-fade",
-        callbacks: {
-          markupParse: function (template, values, item) {
-            template.find("iframe").attr("allow", "autoplay");
-          },
-        },
-      });
-
-      /*Music popup*/
-      $(".has-popup-music").magnificPopup({
-        disableOn: 700,
-        type: "iframe",
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-        mainClass: "mfp-fade",
-      });
-
-      /*Gallery popup*/
-      $(".has-popup-gallery").on("click", function () {
-        var gallery = $(this).attr("href");
-
-        $(gallery)
-          .magnificPopup({
-            delegate: "a",
-            type: "image",
-            closeOnContentClick: false,
-            mainClass: "mfp-fade",
-            removalDelay: 160,
-            fixedContentPos: false,
-            gallery: {
-              enabled: true,
-            },
-          })
-          .magnificPopup("open");
-
-        return false;
-      });
-
-      $(".popup-modal").magnificPopup({
-        type: "inline",
-        preloader: false,
-        focus: "#username",
-        modal: true,
-      });
-      $(".close-modal").on("click", function (e) {
-        $.magnificPopup.close();
       });
     });
 
@@ -587,3 +510,15 @@ const testimoniesDOM = document.querySelector(".testimonies");
       });
     });
 })();
+
+const closeButton = document.querySelector(".mfp-close");
+
+function modalHashtag() {
+  window.location.hash = "#modal";
+}
+
+window.onhashchange = function () {
+  if (window.location.hash === "") {
+    $.magnificPopup.close();
+  }
+};
