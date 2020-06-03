@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/photo-profile",
+      "handler": "photo-profile.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/photo-profile",
+      "handler": "photo-profile.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/photo-profile",
+      "handler": "photo-profile.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -279,49 +279,6 @@ const theme = document.querySelector(".theme-changer>a>.link");
 const themeIcon = document.querySelector(".theme-changer>a>.icon");
 const profile = document.querySelector(".profile>.image");
 
-themeChanger.addEventListener("click", () => toggleTheme());
-
-function setTheme(themeName) {
-  localStorage.setItem("theme", themeName);
-  document.documentElement.className = themeName;
-}
-
-// function to toggle between light and dark theme
-function toggleTheme() {
-  if (localStorage.getItem("theme") === "theme-dark") {
-    setTheme("theme-light");
-    backProfile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/bg.webp" alt="" />`;
-    theme.innerHTML = "Light";
-    themeIcon.classList.remove("ion-ios-moon");
-    themeIcon.classList.add("ion-android-sunny");
-    profile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/profile_light.webp" alt="" />`;
-  } else {
-    setTheme("theme-dark");
-    backProfile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/bg1.webp" alt="" />`;
-    theme.innerHTML = "Dark";
-    themeIcon.classList.remove("ion-android-sunny");
-    themeIcon.classList.add("ion-ios-moon");
-    profile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/profile_dark.webp" alt="" />`;
-  }
-}
-
-// Immediately invoked function to set the theme on initial load
-(function () {
-  if (localStorage.getItem("theme") === "theme-light") {
-    setTheme("theme-light");
-    backProfile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/bg.webp" alt="" />`;
-    themeIcon.classList.add("ion-android-sunny");
-    theme.innerHTML = "Light";
-    profile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/profile_light.webp" alt="" />`;
-  } else {
-    setTheme("theme-dark");
-    backProfile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/bg1.webp" alt="" />`;
-    themeIcon.classList.add("ion-ios-moon");
-    theme.innerHTML = "Dark";
-    profile.innerHTML = `<img class="lazyload" data-src="assets/images/WebP/profile_dark.webp" alt="" />`;
-  }
-})();
-
 /* VIDEO CONTROL */
 
 const video = document.querySelector("#video-item-1");
@@ -335,6 +292,7 @@ function pauseVideo() {
 
 const projectsDOM = document.querySelector(".projects");
 const testimoniesDOM = document.querySelector(".testimonies");
+const cv = document.querySelector(".cv");
 
 (function () {
   /* PROJECTS */
@@ -508,6 +466,56 @@ const testimoniesDOM = document.querySelector(".testimonies");
         nav: false,
         dots: true,
       });
+    });
+
+  /* UPLOAD CV */
+  fetch("/cv")
+    .then((res) => res.json())
+    .then((data) => (cv.href = data.URL));
+
+  /* PROFILE PHOTO */
+  fetch("/photo-profile")
+    .then((res) => res.json())
+    .then((data) => {
+      themeChanger.addEventListener("click", () => toggleTheme());
+
+      function setTheme(themeName) {
+        localStorage.setItem("theme", themeName);
+        document.documentElement.className = themeName;
+      }
+
+      // function to toggle between light and dark theme
+      function toggleTheme() {
+        if (localStorage.getItem("theme") === "theme-dark") {
+          setTheme("theme-light");
+          backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_light.formats.small.url}" alt="" />`;
+          theme.innerHTML = "Light";
+          themeIcon.classList.remove("ion-ios-moon");
+          themeIcon.classList.add("ion-android-sunny");
+          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+        } else {
+          setTheme("theme-dark");
+          backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_dark.formats.small.url}" alt="" />`;
+          theme.innerHTML = "Dark";
+          themeIcon.classList.remove("ion-android-sunny");
+          themeIcon.classList.add("ion-ios-moon");
+          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+        }
+      }
+
+      if (localStorage.getItem("theme") === "theme-light") {
+        setTheme("theme-light");
+        backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_light.formats.small.url}" alt="" />`;
+        themeIcon.classList.add("ion-android-sunny");
+        theme.innerHTML = "Light";
+        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+      } else {
+        setTheme("theme-dark");
+        backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_dark.formats.small.url}" alt="" />`;
+        themeIcon.classList.add("ion-ios-moon");
+        theme.innerHTML = "Dark";
+        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+      }
     });
 })();
 
