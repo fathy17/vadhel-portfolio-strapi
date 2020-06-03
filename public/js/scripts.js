@@ -499,7 +499,7 @@ const cv = document.querySelector(".cv");
           theme.innerHTML = "Dark";
           themeIcon.classList.remove("ion-android-sunny");
           themeIcon.classList.add("ion-ios-moon");
-          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_dark.formats.thumbnail.url}" alt="" />`;
         }
       }
 
@@ -514,7 +514,7 @@ const cv = document.querySelector(".cv");
         backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_dark.formats.small.url}" alt="" />`;
         themeIcon.classList.add("ion-ios-moon");
         theme.innerHTML = "Dark";
-        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
+        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_dark.formats.thumbnail.url}" alt="" />`;
       }
     });
 })();
