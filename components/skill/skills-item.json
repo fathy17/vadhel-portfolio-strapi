@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_skill_skills_items",
+  "info": {
+    "name": "Skills Item",
+    "icon": "user-check"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "percentage_value": {
+      "type": "integer",
+      "max": 100,
+      "min": 1
+    }
+  }
+}

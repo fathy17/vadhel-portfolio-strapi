@@ -292,9 +292,167 @@ function pauseVideo() {
 
 const projectsDOM = document.querySelector(".projects");
 const testimoniesDOM = document.querySelector(".testimonies");
+
+// Profile DOM
+const name = document.querySelector(".profile .title");
+const job_role = document.querySelector(".profile .subtitle");
+const social = document.querySelector(".profile .social");
+const about_me = document.querySelector(".about-me");
+
 const cv = document.querySelector(".cv");
 
+const service = document.querySelector(".service-items");
+
+const fun_fact = document.querySelector(".fuct-items");
+
 (function () {
+  /* PROFILE */
+  fetch("/profile")
+    .then((res) => res.json())
+    .then((data) => {
+      //Basic Info
+      name.innerHTML = data.basic_info.name;
+      job_role.innerHTML = data.basic_info.job_role;
+      about_me.innerHTML = data.basic_info.about_me;
+
+      // Social Media
+      const markupSocial = data.social_media.map(
+        (item) => `
+      <a
+        rel="noreferrer"
+        target="_blank"
+        href="${item.url}"
+        ><span class="ion ${item.icon}"></span
+      ></a>`
+      );
+      markupSocial.map((item) => (social.innerHTML += item));
+
+      //CV
+      cv.href = data.cv_url;
+
+      //Services
+      const markupService = data.my_services.map(
+        (item) => `
+      <div class="col col-d-6 col-t-6 col-m-12 border-line-h">
+        <div class="service-item">
+          <div class="icon">
+            <span class="ion ${item.icon}"></span>
+          </div>
+          <div class="name">${item.title}</div>
+          <p>
+            ${item.description}
+          </p>
+        </div>
+      </div>`
+      );
+      markupService.map((item) => (service.innerHTML += item));
+
+      //Fun Fact
+      const markupFunFact = data.fun_fact.map(
+        (item) => `
+      <div class="col col-d-3 col-t-3 col-m-6 border-line-v">
+        <div class="fuct-item">
+          <div class="icon">
+            <span class="ion ${item.icon}"></span>
+          </div>
+          <div class="name">${item.title}</div>
+        </div>
+      </div>`
+      );
+      markupFunFact.map((item) => (fun_fact.innerHTML += item));
+
+      // Photo Profile
+      themeChanger.addEventListener("click", () => toggleTheme());
+
+      function setTheme(themeName) {
+        localStorage.setItem("theme", themeName);
+        document.documentElement.className = themeName;
+      }
+
+      // function to toggle between light and dark theme
+      function toggleTheme() {
+        if (localStorage.getItem("theme") === "theme-dark") {
+          setTheme("theme-light");
+          backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_light.formats.small.url}" alt="" />`;
+          theme.innerHTML = "Light";
+          themeIcon.classList.remove("ion-ios-moon");
+          themeIcon.classList.add("ion-android-sunny");
+          profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_light.formats.thumbnail.url}" alt="" />`;
+        } else {
+          setTheme("theme-dark");
+          backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_dark.formats.small.url}" alt="" />`;
+          theme.innerHTML = "Dark";
+          themeIcon.classList.remove("ion-android-sunny");
+          themeIcon.classList.add("ion-ios-moon");
+          profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_dark.formats.thumbnail.url}" alt="" />`;
+        }
+      }
+
+      if (localStorage.getItem("theme") === "theme-light") {
+        setTheme("theme-light");
+        backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_light.formats.small.url}" alt="" />`;
+        themeIcon.classList.add("ion-android-sunny");
+        theme.innerHTML = "Light";
+        profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_light.formats.thumbnail.url}" alt="" />`;
+      } else {
+        setTheme("theme-dark");
+        backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_dark.formats.small.url}" alt="" />`;
+        themeIcon.classList.add("ion-ios-moon");
+        theme.innerHTML = "Dark";
+        profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_dark.formats.thumbnail.url}" alt="" />`;
+      }
+
+      // Testimonies
+      const markupTestimonies = data.testimonies.map((item) => {
+        return `
+        <div class="item">
+          <div class="revs-item">
+            <div class="text">
+              ${item.description}
+            </div>
+            <div class="user">
+              <div class="img">
+                <img
+                  class="lazyload"
+                  data-src="${item.image.formats.thumbnail.url}"
+                  alt=""
+                />
+              </div>
+              <div class="info">
+                <div class="name">${item.name}</div>
+                <div class="company">${item.role}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+      });
+      let markupT = "";
+      markupTestimonies.forEach((item) => (markupT += item));
+      testimoniesDOM.innerHTML = `
+      <div class="revs-carousel default-revs">
+        <div class="owl-carousel testimonies">
+          ${markupT}
+        </div>
+      </div>`;
+    })
+    .then(() => {
+      var revs_slider = $(".revs-carousel.default-revs .owl-carousel");
+
+      revs_slider.owlCarousel({
+        margin: 0,
+        items: 1,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        rewind: false,
+        nav: false,
+        dots: true,
+      });
+    })
+    .catch((err) => console.log(err));
+
   /* PROJECTS */
   fetch("/projects")
     .then((response) => response.json())
@@ -409,113 +567,6 @@ const cv = document.querySelector(".cv");
           verticalFit: true,
         },
       });
-    });
-
-  /* TESTIMONIES */
-  fetch("/testimonies")
-    .then((res) => res.json())
-    .then((data) => {
-      let markup = data.map((testimony) => {
-        return `
-        <div class="item">
-          <div class="revs-item">
-            <div class="text">
-              ${testimony.description}
-            </div>
-            <div class="user">
-              <div class="img">
-                <img
-                  class="lazyload"
-                  data-src="${testimony.image.formats.thumbnail.url}"
-                  alt=""
-                />
-              </div>
-              <div class="info">
-                <div class="name">${testimony.name}</div>
-                <div class="company">${testimony.role}</div>
-              </div>
-              <div class="clear"></div>
-            </div>
-          </div>
-        </div>
-        `;
-      });
-      return markup;
-    })
-    .then((html) => {
-      let markup = "";
-      html.forEach((item) => (markup += item));
-      testimoniesDOM.innerHTML = `
-      <div class="revs-carousel default-revs">
-        <div class="owl-carousel testimonies">
-          ${markup}
-        </div>
-      </div>`;
-    })
-    .then(() => {
-      var revs_slider = $(".revs-carousel.default-revs .owl-carousel");
-
-      revs_slider.owlCarousel({
-        margin: 0,
-        items: 1,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        loop: true,
-        rewind: false,
-        nav: false,
-        dots: true,
-      });
-    });
-
-  /* UPLOAD CV */
-  fetch("/cv")
-    .then((res) => res.json())
-    .then((data) => (cv.href = data.URL));
-
-  /* PROFILE PHOTO */
-  fetch("/photo-profile")
-    .then((res) => res.json())
-    .then((data) => {
-      themeChanger.addEventListener("click", () => toggleTheme());
-
-      function setTheme(themeName) {
-        localStorage.setItem("theme", themeName);
-        document.documentElement.className = themeName;
-      }
-
-      // function to toggle between light and dark theme
-      function toggleTheme() {
-        if (localStorage.getItem("theme") === "theme-dark") {
-          setTheme("theme-light");
-          backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_light.formats.small.url}" alt="" />`;
-          theme.innerHTML = "Light";
-          themeIcon.classList.remove("ion-ios-moon");
-          themeIcon.classList.add("ion-android-sunny");
-          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
-        } else {
-          setTheme("theme-dark");
-          backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_dark.formats.small.url}" alt="" />`;
-          theme.innerHTML = "Dark";
-          themeIcon.classList.remove("ion-android-sunny");
-          themeIcon.classList.add("ion-ios-moon");
-          profile.innerHTML = `<img class="lazyload" data-src="${data.dp_dark.formats.thumbnail.url}" alt="" />`;
-        }
-      }
-
-      if (localStorage.getItem("theme") === "theme-light") {
-        setTheme("theme-light");
-        backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_light.formats.small.url}" alt="" />`;
-        themeIcon.classList.add("ion-android-sunny");
-        theme.innerHTML = "Light";
-        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_light.formats.thumbnail.url}" alt="" />`;
-      } else {
-        setTheme("theme-dark");
-        backProfile.innerHTML = `<img class="lazyload" data-src="${data.bg_dark.formats.small.url}" alt="" />`;
-        themeIcon.classList.add("ion-ios-moon");
-        theme.innerHTML = "Dark";
-        profile.innerHTML = `<img class="lazyload" data-src="${data.dp_dark.formats.thumbnail.url}" alt="" />`;
-      }
     });
 })();
 

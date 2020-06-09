@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_services_my_services",
+  "info": {
+    "name": "my_services",
+    "icon": "shopping-bag"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_fact_fun_facts",
+  "info": {
+    "name": "fun_fact",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

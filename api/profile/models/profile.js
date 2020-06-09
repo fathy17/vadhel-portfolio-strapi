@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `testimony` model.
+ * Lifecycle callbacks for the `profile` model.
  */
 
 module.exports = {

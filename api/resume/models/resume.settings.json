@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "resumes",
+  "info": {
+    "name": "Resume"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Experience": {
+      "type": "component",
+      "repeatable": true,
+      "component": "exp.experience"
+    },
+    "Education": {
+      "type": "component",
+      "repeatable": true,
+      "component": "edu.education"
+    },
+    "Skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skills.skills"
+    }
+  }
+}

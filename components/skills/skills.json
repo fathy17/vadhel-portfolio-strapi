@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_skills_skills",
+  "info": {
+    "name": "Skills",
+    "icon": "laptop"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "skills_item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skill.skills-item"
+    },
+    "graph_style": {
+      "type": "enumeration",
+      "enum": [
+        "Bar",
+        "Dot",
+        "Circle",
+        "Checklist"
+      ]
+    }
+  }
+}

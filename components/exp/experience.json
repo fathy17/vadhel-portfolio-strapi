@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_exp_experiences",
+  "info": {
+    "name": "Experience",
+    "icon": "hammer"
+  },
+  "options": {},
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

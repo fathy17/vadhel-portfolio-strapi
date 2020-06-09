@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "profiles",
+  "info": {
+    "name": "Profile"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "basic_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "basic.basic-info"
+    },
+    "my_services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "services.my-services"
+    },
+    "fun_fact": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fact.fun-fact"
+    },
+    "social_media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.social-media"
+    },
+    "cv_url": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "photo.photo"
+    },
+    "testimonies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "testimony.testimonies"
+    }
+  }
+}

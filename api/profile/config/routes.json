@@ -2,24 +2,24 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/cv",
-      "handler": "cv.find",
+      "path": "/profile",
+      "handler": "profile.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/cv",
-      "handler": "cv.update",
+      "path": "/profile",
+      "handler": "profile.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/cv",
-      "handler": "cv.delete",
+      "path": "/profile",
+      "handler": "profile.delete",
       "config": {
         "policies": []
       }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_social_social_medias",
+  "info": {
+    "name": "social_media",
+    "icon": "comment-dots"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

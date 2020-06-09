@@ -2,24 +2,24 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/photo-profile",
-      "handler": "photo-profile.find",
+      "path": "/resume",
+      "handler": "resume.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/photo-profile",
-      "handler": "photo-profile.update",
+      "path": "/resume",
+      "handler": "resume.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/photo-profile",
-      "handler": "photo-profile.delete",
+      "path": "/resume",
+      "handler": "resume.delete",
       "config": {
         "policies": []
       }

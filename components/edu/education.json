@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_edu_educations",
+  "info": {
+    "name": "Education",
+    "icon": "graduation-cap"
+  },
+  "options": {},
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

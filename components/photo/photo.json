@@ -1,23 +1,11 @@
 {
-  "kind": "singleType",
-  "collectionName": "photo_profiles",
+  "collectionName": "components_photo_photos",
   "info": {
-    "name": "Photo Profile"
+    "name": "photo",
+    "icon": "folder"
   },
-  "options": {
-    "increments": true,
-    "timestamps": true
-  },
+  "options": {},
   "attributes": {
-    "dp_light": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "dp_dark": {
       "model": "file",
       "via": "related",
@@ -27,7 +15,7 @@
       "plugin": "upload",
       "required": false
     },
-    "bg_light": {
+    "dp_light": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -37,6 +25,15 @@
       "required": false
     },
     "bg_dark": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "bg_light": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

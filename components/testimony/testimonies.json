@@ -1,13 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "testimonies",
+  "collectionName": "components_testimony_testimonies",
   "info": {
-    "name": "testimony"
+    "name": "testimonies",
+    "icon": "grin"
   },
-  "options": {
-    "increments": true,
-    "timestamps": true
-  },
+  "options": {},
   "attributes": {
     "name": {
       "type": "string"
@@ -19,9 +16,7 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false
