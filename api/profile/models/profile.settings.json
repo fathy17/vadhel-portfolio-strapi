@@ -41,6 +41,11 @@
       "type": "component",
       "repeatable": true,
       "component": "testimony.testimonies"
+    },
+    "Theme_Color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "color.theme-color"
     }
   }
 }

@@ -6,7 +6,7 @@
 	-->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Vadhel - Architecture Till The End</title>
+    <title>Vadhel - Professional Architect</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -16,7 +16,25 @@
       name="keywords"
       content="architect, designer, resume, personal, card, cv, cards, portfolio, exterior, interior, bim"
     />
-    <meta name="author" content="fathy" />
+    <meta name="author" content="Fathy Fahrezy" />
+    <!-- Twitter Card data -->
+    <meta
+      name="twitter:card"
+      value="vCard & Resume of Muh Vadhel Rizaldy. Professional Architect"
+    />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Title Here" />
+    <meta property="og:type" content="resume" />
+    <meta property="og:url" content="http://vadhel-portfolio.herokuapp.com/" />
+    <meta
+      property="og:image"
+      content="http://vadhel-portfolio.herokuapp.com/assets/logo.png"
+    />
+    <meta
+      property="og:description"
+      content="vCard & Resume of Muh Vadhel Rizaldy. Professional Architect"
+    />
 
     <!--
 		Load Fonts
@@ -79,8 +97,12 @@
     <!--
 		Favicons
 	-->
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      id="logo_title"
+      rel="icon"
+      href="assets/favicon.ico"
+      type="image/x-ico"
+    />
 
     <link rel="stylesheet" href="css/custom.css" />
   </head>
@@ -216,10 +238,21 @@
                 <div class="col col-d-6 col-t-6 col-m-12 border-line-v">
                   <div class="info-list">
                     <ul>
-                      <li><strong>Age . . . . .</strong> 26</li>
-                      <li><strong>Residence . . . . .</strong> INA</li>
-                      <li><strong>Freelance . . . . .</strong> Available</li>
-                      <li><strong>Address . . . . .</strong> Makassar, INA</li>
+                      <li>
+                        <strong>Age . . . . .</strong> <span class="age"></span>
+                      </li>
+                      <li>
+                        <strong>Residence . . . . .</strong>
+                        <span class="residence"></span>
+                      </li>
+                      <li>
+                        <strong>Freelance . . . . .</strong>
+                        <span class="freelance"></span>
+                      </li>
+                      <li>
+                        <strong>Address . . . . .</strong>
+                        <span class="address"></span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -289,37 +322,7 @@
                     <div class="icon"><i class="ion ion-briefcase"></i></div>
                     <div class="name">Experience</div>
                   </div>
-                  <div class="resume-items">
-                    <div class="resume-item border-line-h active">
-                      <div class="date">2018 - Present</div>
-                      <div class="name">BIM Engineer</div>
-                      <div class="company">PT. Adhi Karya (Persero) Tbk.</div>
-                      <p>
-                        facilitate the planning process, IT system services
-                        (software) related to the development of BIM
-                        implementation support and Develop a BIM training
-                        program.
-                      </p>
-                    </div>
-                    <div class="resume-item border-line-h">
-                      <div class="date">2016 - 2018</div>
-                      <div class="name">Project Planning</div>
-                      <div class="company">PT. Adhi Karya (Persero) Tbk.</div>
-                      <p>
-                        Package-2A Construction Buildings for Electrical and
-                        Mechanical Department, Hasanuddin University
-                      </p>
-                    </div>
-                    <div class="resume-item">
-                      <div class="date">2013 - 2015</div>
-                      <div class="name">Junior Architect</div>
-                      <div class="company">PT. Duta Arya Pratama</div>
-                      <p>
-                        Build Desain Interior for Hotel Four Points by Sheraton
-                        Makassar
-                      </p>
-                    </div>
-                  </div>
+                  <div class="resume-items experience"></div>
                 </div>
 
                 <!-- education -->
@@ -328,34 +331,7 @@
                     <div class="icon"><i class="ion ion-university"></i></div>
                     <div class="name">Education</div>
                   </div>
-                  <div class="resume-items">
-                    <div class="resume-item border-line-h">
-                      <div class="date">2020</div>
-                      <div class="name">Autodesk Certified Professional</div>
-                      <div class="company">Certiport</div>
-                      <p>
-                        Certified Professional: Revit Architecture and
-                        Structure.
-                      </p>
-                    </div>
-                    <div class="resume-item border-line-h">
-                      <div class="date">2018</div>
-                      <div class="name">Advanced Infrastructure Design</div>
-                      <div class="company">Praba Engineering Service</div>
-                      <p>
-                        Advanced Infrastructure Design AutoDesk Civil 3D.
-                      </p>
-                    </div>
-                    <div class="resume-item">
-                      <div class="date">2011 - 2016</div>
-                      <div class="name">Architecture Engineering</div>
-                      <div class="company">Hasanuddin University</div>
-                      <p>
-                        Bachelor's Degree in Architecture Engineer Hasanuddin
-                        University, Makassar, South Sulawesi
-                      </p>
-                    </div>
-                  </div>
+                  <div class="resume-items education"></div>
                 </div>
 
                 <div class="clear"></div>
@@ -370,157 +346,7 @@
               <div class="title">My Skills</div>
 
               <!-- content -->
-              <div class="row">
-                <!-- skill item -->
-                <div class="col col-d-6 col-t-6 col-m-12 border-line-v">
-                  <div class="skills-list">
-                    <div class="skill-title border-line-h">
-                      <div class="icon"><i class="ion ion-easel"></i></div>
-                      <div class="name">Design</div>
-                    </div>
-                    <ul>
-                      <li class="border-line-h">
-                        <div class="name">3D Max</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 80%;"></div>
-                        </div>
-                      </li>
-                      <li class="border-line-h">
-                        <div class="name">Sketchup</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 90%;"></div>
-                        </div>
-                      </li>
-                      <li class="border-line-h">
-                        <div class="name">Vray</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 75%;"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="name">Photoshop</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 85%;"></div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- skill item -->
-                <div class="col col-d-6 col-t-6 col-m-12 border-line-v">
-                  <div class="skills-list dotted">
-                    <div class="skill-title border-line-h">
-                      <div class="icon"><i class="ion ion-ios-home"></i></div>
-                      <div class="name">BIM</div>
-                    </div>
-                    <ul>
-                      <li class="border-line-h">
-                        <div class="name">Revit</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 90%;"></div>
-                        </div>
-                      </li>
-                      <li class="border-line-h">
-                        <div class="name">Naviswork</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 80%;"></div>
-                        </div>
-                      </li>
-                      <li class="border-line-h">
-                        <div class="name">Qubicost</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 60%;"></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="name">Lumion</div>
-                        <div class="progress">
-                          <div class="percentage" style="width: 90%;"></div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- skill item -->
-                <div class="col col-d-6 col-t-6 col-m-12 border-line-v">
-                  <div class="skills-list circles">
-                    <div class="skill-title border-line-h">
-                      <div class="icon">
-                        <i class="ion ion-videocamera"></i>
-                      </div>
-                      <div class="name">Visual Design</div>
-                    </div>
-                    <ul>
-                      <li>
-                        <div class="name">After Effect</div>
-                        <div class="progress p80">
-                          <span>80%</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="name">Adobe Audition</div>
-                        <div class="progress p70">
-                          <span>70%</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="name">Adobe Premiere</div>
-                        <div class="progress p70">
-                          <span>70%</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="name">Filmora</div>
-                        <div class="progress p90">
-                          <span>90%</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- skill item -->
-                <div class="col col-d-6 col-t-6 col-m-12 border-line-v">
-                  <div class="skills-list list">
-                    <div class="skill-title border-line-h">
-                      <div class="icon">
-                        <i class="ion ion-android-list"></i>
-                      </div>
-                      <div class="name">Knowledge</div>
-                    </div>
-                    <ul>
-                      <li>
-                        <div class="name">Drone pilot</div>
-                      </li>
-                      <li>
-                        <div class="name">Video editing</div>
-                      </li>
-                      <li>
-                        <div class="name">Create logo design</div>
-                      </li>
-                      <li>
-                        <div class="name">Design for print</div>
-                      </li>
-                      <li>
-                        <div class="name">Photo editing</div>
-                      </li>
-                      <li>
-                        <div class="name">Graphics and animations</div>
-                      </li>
-                      <li>
-                        <div class="name">Cost estimating</div>
-                      </li>
-                      <li>
-                        <div class="name">Corel Draw</div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="clear"></div>
-              </div>
+              <div class="row skills-item"></div>
             </div>
           </div>
         </div>
@@ -612,10 +438,22 @@
                   <!-- <div class="map" id="map"></div> -->
                   <div class="info-list">
                     <ul>
-                      <li><strong>Address . . . . .</strong> Makassar, INA</li>
-                      <li><strong>Email </strong> muh.vadhel@gmail.com</li>
-                      <li><strong>Phone . . . . .</strong> +62823-4343-5243</li>
-                      <li><strong>Freelance . . . . .</strong> Available</li>
+                      <li>
+                        <strong>Address . . . . .</strong>
+                        <span class="address"></span>
+                      </li>
+                      <li>
+                        <strong>Email </strong>
+                        <span class="email"></span>
+                      </li>
+                      <li>
+                        <strong>Phone . . . . .</strong>
+                        <span class="phone"></span>
+                      </li>
+                      <li>
+                        <strong>Freelance . . . . .</strong>
+                        <span class="freelance"></span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -702,6 +540,10 @@
     <script src="js/lazysizes.min.js" async></script>
     <script src="js/imagesloaded.pkgd.js"></script>
     <script src="js/owl.carousel.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"
+      async
+    ></script>
 
     <!--
 		Main Scripts

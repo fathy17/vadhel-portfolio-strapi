@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_color_theme_colors",
+  "info": {
+    "name": "Theme_Color",
+    "icon": "chart-pie"
+  },
+  "options": {},
+  "attributes": {
+    "light_primary_color": {
+      "type": "string"
+    },
+    "light_secondary_color": {
+      "type": "string"
+    },
+    "dark_primary_color": {
+      "type": "string"
+    },
+    "dark_secondary_color": {
+      "type": "string"
+    },
+    "dark_third_color": {
+      "type": "string"
+    },
+    "light_third_color": {
+      "type": "string"
+    }
+  }
+}

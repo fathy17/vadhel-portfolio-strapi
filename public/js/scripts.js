@@ -17,7 +17,6 @@ $(function () {
 	*/
 
   var width = $(window).width();
-  var height = $(window).height();
 
   /*
 		Header Menu Desktop
@@ -36,7 +35,6 @@ $(function () {
     var card_item = $(id);
     var menu_items = $(".top-menu li");
     var menu_item = $(this).closest("li");
-    var d_lnk = $(".lnks .lnk.discover");
 
     if (width >= 1024) {
       /* if desktop */
@@ -80,7 +78,6 @@ $(function () {
 
   $(window).on("resize", function () {
     var width = $(window).width();
-    var height = $(window).height();
 
     if (width < 1024) {
       $(".card-inner").removeClass("hidden");
@@ -171,38 +168,6 @@ $(function () {
     var revs_slider = $(".revs-carousel .owl-carousel");
     revs_slider.find(".revs-item").css({ "max-width": revs_slider.width() });
   });
-
-  /*
-		Dotted Skills Line
-	*/
-
-  function skills() {
-    var skills_dotted = $(".skills-list.dotted .progress");
-    var skills_dotted_w = skills_dotted.width();
-    if (skills_dotted.length) {
-      skills_dotted.append(
-        '<span class="dg"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-      );
-      skills_dotted
-        .find(".percentage")
-        .append(
-          '<span class="da"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
-        );
-      skills_dotted.find(".percentage .da").css({ width: skills_dotted_w });
-    }
-  }
-  setTimeout(skills, 1000);
-
-  /*
-		Circle Skills Line
-	*/
-
-  var skills_circles = $(".skills-list.circles .progress");
-  if (skills_circles.length) {
-    skills_circles.append(
-      '<div class="slice"><div class="bar"></div><div class="fill"></div></div>'
-    );
-  }
 
   /*
 		Wrap First Title Word
@@ -298,12 +263,22 @@ const name = document.querySelector(".profile .title");
 const job_role = document.querySelector(".profile .subtitle");
 const social = document.querySelector(".profile .social");
 const about_me = document.querySelector(".about-me");
-
 const cv = document.querySelector(".cv");
-
 const service = document.querySelector(".service-items");
-
 const fun_fact = document.querySelector(".fuct-items");
+
+// Resume DOM
+const experience = document.querySelector(".experience");
+const education = document.querySelector(".education");
+const skills = document.querySelector(".skills-item");
+
+// Contact DOM
+const email = document.querySelector(".email");
+const address = document.querySelectorAll(".address");
+const freelance = document.querySelectorAll(".freelance");
+const phone = document.querySelector(".phone");
+const age = document.querySelector(".age");
+const residence = document.querySelector(".residence");
 
 (function () {
   /* PROFILE */
@@ -314,6 +289,20 @@ const fun_fact = document.querySelector(".fuct-items");
       name.innerHTML = data.basic_info.name;
       job_role.innerHTML = data.basic_info.job_role;
       about_me.innerHTML = data.basic_info.about_me;
+      email.innerHTML = data.basic_info.email;
+      address.forEach((item) => {
+        item.innerHTML = data.basic_info.address;
+      });
+      freelance.forEach((item) => {
+        if (data.basic_info.freelance) {
+          item.innerHTML = "Available";
+        } else {
+          item.innerHTML = "Not Available";
+        }
+      });
+      phone.innerHTML = data.basic_info.phone;
+      age.innerHTML = data.basic_info.age;
+      residence.innerHTML = data.basic_info.residence;
 
       // Social Media
       const markupSocial = data.social_media.map(
@@ -361,6 +350,10 @@ const fun_fact = document.querySelector(".fuct-items");
       );
       markupFunFact.map((item) => (fun_fact.innerHTML += item));
 
+      //Theme DOM
+      let dark;
+      let light;
+
       // Photo Profile
       themeChanger.addEventListener("click", () => toggleTheme());
 
@@ -373,33 +366,85 @@ const fun_fact = document.querySelector(".fuct-items");
       function toggleTheme() {
         if (localStorage.getItem("theme") === "theme-dark") {
           setTheme("theme-light");
+          light = document.querySelector(".theme-light");
           backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_light.formats.small.url}" alt="" />`;
           theme.innerHTML = "Light";
           themeIcon.classList.remove("ion-ios-moon");
           themeIcon.classList.add("ion-android-sunny");
           profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_light.formats.thumbnail.url}" alt="" />`;
+          light.style.setProperty(
+            "--color-theme",
+            data.Theme_Color.light_primary_color
+          );
+          light.style.setProperty(
+            "--secondary-color",
+            data.Theme_Color.light_secondary_color
+          );
+          light.style.setProperty(
+            "--third-color",
+            data.Theme_Color.light_third_color
+          );
         } else {
           setTheme("theme-dark");
+          dark = document.querySelector(".theme-dark");
           backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_dark.formats.small.url}" alt="" />`;
           theme.innerHTML = "Dark";
           themeIcon.classList.remove("ion-android-sunny");
           themeIcon.classList.add("ion-ios-moon");
           profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_dark.formats.thumbnail.url}" alt="" />`;
+          dark.style.setProperty(
+            "--color-theme",
+            data.Theme_Color.dark_primary_color
+          );
+          dark.style.setProperty(
+            "--secondary-color",
+            data.Theme_Color.dark_secondary_color
+          );
+          dark.style.setProperty(
+            "--third-color",
+            data.Theme_Color.dark_third_color
+          );
         }
       }
 
       if (localStorage.getItem("theme") === "theme-light") {
         setTheme("theme-light");
+        light = document.querySelector(".theme-light");
         backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_light.formats.small.url}" alt="" />`;
         themeIcon.classList.add("ion-android-sunny");
         theme.innerHTML = "Light";
         profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_light.formats.thumbnail.url}" alt="" />`;
+        light.style.setProperty(
+          "--color-theme",
+          data.Theme_Color.light_primary_color
+        );
+        light.style.setProperty(
+          "--secondary-color",
+          data.Theme_Color.light_secondary_color
+        );
+        light.style.setProperty(
+          "--third-color",
+          data.Theme_Color.light_third_color
+        );
       } else {
         setTheme("theme-dark");
+        dark = document.querySelector(".theme-dark");
         backProfile.innerHTML = `<img class="lazyload" data-src="${data.photo.bg_dark.formats.small.url}" alt="" />`;
         themeIcon.classList.add("ion-ios-moon");
         theme.innerHTML = "Dark";
         profile.innerHTML = `<img class="lazyload" data-src="${data.photo.dp_dark.formats.thumbnail.url}" alt="" />`;
+        dark.style.setProperty(
+          "--color-theme",
+          data.Theme_Color.dark_primary_color
+        );
+        dark.style.setProperty(
+          "--secondary-color",
+          data.Theme_Color.dark_secondary_color
+        );
+        dark.style.setProperty(
+          "--third-color",
+          data.Theme_Color.dark_third_color
+        );
       }
 
       // Testimonies
@@ -450,6 +495,129 @@ const fun_fact = document.querySelector(".fuct-items");
         nav: false,
         dots: true,
       });
+    })
+    .catch((err) => console.log(err));
+
+  /* RESUME */
+  fetch("/resume")
+    .then((res) => res.json())
+    .then((data) => {
+      // Experience
+      const markupExp = data.Experience.map(
+        (item, index) => `
+      <div class="resume-item border-line-h ${index === 0 && "active"}">
+        <div class="date">${item.year}</div>
+        <div class="name">${item.title}</div>
+        <div class="company">${item.company}</div>
+        <p>
+          ${item.description}
+        </p>
+      </div>`
+      );
+      markupExp.map((item) => (experience.innerHTML += item));
+
+      //Education
+      const markupEdu = data.Education.map(
+        (item) => `
+      <div class="resume-item border-line-h ">
+        <div class="date">${item.year}</div>
+        <div class="name">${item.title}</div>
+        <div class="company">${item.institution}</div>
+        <p>
+          ${item.description}
+        </p>
+      </div>`
+      );
+      markupEdu.map((item) => (education.innerHTML += item));
+
+      //Skills
+      const markupSkills = data.Skills.map((item) => {
+        let style = "";
+        switch (item.graph_style) {
+          case "Bar":
+            style = "";
+            break;
+          case "Dot":
+            style = "dotted";
+            break;
+          case "Circle":
+            style = "circles";
+            break;
+          case "Checklist":
+            style = "list";
+            break;
+          default:
+            style = "";
+        }
+
+        let markupSkillItem = "";
+
+        const skillItem = item.skills_item.map(
+          (skill) =>
+            `<li ${
+              style !== "circles" && style !== "list"
+                ? `class="border-line-h"`
+                : ""
+            }>
+              <div class="name">${skill.name}</div>
+              ${
+                style !== "list"
+                  ? `<div class="progress p${skill.percentage_value}">
+                ${
+                  style !== "circles"
+                    ? `<div class="percentage" style="width: ${skill.percentage_value}%;"></div>`
+                    : `<span>${skill.percentage_value}%</span>`
+                }
+              </div>`
+                  : ""
+              }
+            </li>`
+        );
+
+        skillItem.map((markup) => (markupSkillItem += markup));
+
+        return `<div class="col col-d-6 col-t-6 col-m-12 border-line-v">
+                  <div class="skills-list ${style}">
+                    <div class="skill-title border-line-h">
+                      <div class="icon"><i class="ion ${item.icon}"></i></div>
+                      <div class="name">${item.name}</div>
+                    </div>
+                    <ul>
+                      ${markupSkillItem}
+                    </ul>
+                  </div>
+                </div>`;
+      });
+
+      markupSkills.map((item) => (skills.innerHTML += item));
+    })
+    .then(() => {
+      /*Dotted Skills Line*/
+
+      function skills() {
+        var skills_dotted = $(".skills-list.dotted .progress");
+        var skills_dotted_w = skills_dotted.width();
+        if (skills_dotted.length) {
+          skills_dotted.append(
+            '<span class="dg"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
+          );
+          skills_dotted
+            .find(".percentage")
+            .append(
+              '<span class="da"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>'
+            );
+          skills_dotted.find(".percentage .da").css({ width: skills_dotted_w });
+        }
+      }
+      setTimeout(skills, 1000);
+
+      /*Circle Skills Line*/
+      var skills_circles = $(".skills-list.circles .progress");
+      if (skills_circles.length) {
+        skills_circles.append(
+          '<div class="slice"><div class="bar"></div><div class="fill"></div></div>'
+        );
+      }
     })
     .catch((err) => console.log(err));
 
@@ -567,7 +735,8 @@ const fun_fact = document.querySelector(".fuct-items");
           verticalFit: true,
         },
       });
-    });
+    })
+    .catch((err) => console.log(err));
 })();
 
 const closeButton = document.querySelector(".mfp-close");
