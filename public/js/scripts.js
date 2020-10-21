@@ -629,7 +629,7 @@ const residence = document.querySelector(".residence");
         let images = project.image.map((image) => {
           return `
             <div class="item">
-              <a target="_blank" href="${image.formats.large.url}">
+              <a target="_blank" href="${image.url}">
                 <img src="${image.formats.small.url}" style="width:100%">
               </a>
             </div>`;
@@ -671,7 +671,7 @@ const residence = document.querySelector(".residence");
                     <h1>${project.name}</h1>
                     <div class="blog-detail">${project.type}</div>
                     <div class="blog-content">
-                      ${project.description}
+                      ${marked(project.description)}
                     </div>
                   </div>
                 </div>
