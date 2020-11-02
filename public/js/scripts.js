@@ -630,7 +630,7 @@ const residence = document.querySelector(".residence");
           return `
             <div class="item">
               <a target="_blank" href="${image.url}">
-                <img src="${image.formats.small.url}" style="width:100%">
+                <img src="${image.url}" style="width:100%">
               </a>
             </div>`;
         });
