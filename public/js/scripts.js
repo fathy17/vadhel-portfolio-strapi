@@ -282,7 +282,7 @@ const residence = document.querySelector(".residence");
 
 (function () {
   /* PROFILE */
-  fetch("/profile")
+  fetch("http://vadhel-portfolio.herokuapp.com/profile")
     .then((res) => res.json())
     .then((data) => {
       //Basic Info
@@ -499,7 +499,7 @@ const residence = document.querySelector(".residence");
     .catch((err) => console.log(err));
 
   /* RESUME */
-  fetch("/resume")
+  fetch("http://vadhel-portfolio.herokuapp.com/resume")
     .then((res) => res.json())
     .then((data) => {
       // Experience
@@ -622,7 +622,7 @@ const residence = document.querySelector(".residence");
     .catch((err) => console.log(err));
 
   /* PROJECTS */
-  fetch("/projects")
+  fetch("http://vadhel-portfolio.herokuapp.com/projects")
     .then((response) => response.json())
     .then((data) => {
       let markup = data.map((project) => {
