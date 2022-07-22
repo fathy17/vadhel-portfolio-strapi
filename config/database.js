@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
     default: {
       connector: "bookshelf",
       settings: {
-        client: "mysql",
+        client: "postgres",
         host: env("DATABASE_HOST", "localhost"),
         port: env.int("DATABASE_PORT", 3306),
         database: env("DATABASE_NAME", "vadhel-portfolio"),
